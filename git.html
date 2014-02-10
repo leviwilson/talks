@@ -78,6 +78,125 @@
               * branching / merging <!-- .element: class="fragment" data-fragment-index="4" -->
           </script>
         </section>
+
+        <section>
+          <section data-markdown>
+            <script type="text/template">
+              # Basic Commands
+            </script>
+          </section>
+
+          <section data-markdown>
+            <script type="text/template">
+              `git init`
+              ```
+              $ git init
+              $ touch hello.txt
+              $ git add .
+              $ git commit -m 'first commit'
+              ```
+            </script>
+          </section>
+
+          <section data-markdown>
+            <script type="text/template">
+              `git status`
+              ```
+              $ git status
+              # On branch master
+              # Changes not staged for commit:
+              #   (use "git add <file>..." to update what will be committed)
+              #   (use "git checkout -- <file>..." to discard changes in working directory)
+              #
+              # modified:   hello.txt
+              #
+              # Untracked files:
+              #   (use "git add <file>..." to include in what will be committed)
+              #
+              # not_tracked.whatever
+              ```
+            </script>
+          </section>
+
+          <section data-markdown>
+            <script type="text/template">
+              `git diff`
+              ```
+              $ git diff
+              diff --git a/hello.txt b/hello.txt
+              index e69de29..6566899 100644
+              --- a/hello.txt
+              +++ b/hello.txt
+              @@ -0,0 +1 @@
+              +Hello, git!
+              ```
+            </script>
+          </section>
+
+          <section data-markdown>
+            <script type="text/template">
+              `git add`  
+              "stages" a commit  
+              ```
+              $ git add hello.txt
+              $ git status
+              # On branch master
+              # Changes to be committed:
+              #   (use "git reset HEAD <file>..." to unstage)
+              #
+              # modified:   hello.txt
+              #
+              ```
+            </script>
+          </section>
+
+
+          <section data-markdown>
+            <script type="text/template">
+              `git commit`
+              ```
+              $ git commit -m 'modified hello.txt'
+              [master f87838d] modified hello.txt
+               1 file changed, 1 insertion(+)
+              ```
+            </script>
+          </section>
+
+          <section data-markdown>
+            <script type="text/template">
+              `git log`
+              ```
+              $ git log
+              commit f87838d0a5ee522ba132bc3b32ac7b59bbb5101a
+              Author: Levi Wilson <levi@leviwilson.com>
+              Date:   Mon Feb 10 00:20:58 2014 -0500
+
+                  modified hello.txt
+
+              commit d6f6eee1e403487764be3dcbf623065db6e7db41
+              Author: Levi Wilson <levi@leviwilson.com>
+              Date:   Mon Feb 10 00:10:12 2014 -0500
+
+                  first commit
+              ```
+            </script>
+          </section>
+
+          <section data-markdown>
+            <script type="text/template">
+              ### Custom Log
+              ```
+              $ git log --pretty=oneline
+              f87838d0a5ee522ba132bc3b32ac7b59bbb5101a modified hello.txt
+              d6f6eee1e403487764be3dcbf623065db6e7db41 first commit
+
+              $ git log --pretty=format:"%h - %an, %ar : %s"
+              f87838d - Levi Wilson, 5 minutes ago : modified hello.txt
+              d6f6eee - Levi Wilson, 16 minutes ago : first commit
+              ```
+            </script>
+          </section>
+        </section>
       </div>
 
 		</div>
