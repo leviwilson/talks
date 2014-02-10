@@ -150,6 +150,30 @@
             </script>
           </section>
 
+          <section data-markdown>
+            <script type="text/template">
+              ### Staged Changes
+              Modifications to files do not affect staged changes.
+              ```
+              $ git status
+              # On branch master
+              # Changes to be committed:
+              #
+              # modified:   hello.txt
+              #
+              # Changes not staged for commit:
+              #
+              # modified:   hello.txt
+              #
+              $ git diff
+              diff --git a/hello.txt b/hello.txt
+              index d61aca8..654550b 100644
+              @@ -1,4 +1,4 @@
+               -Original staged change.
+               +Original staged change...but I want to do more.
+              ```
+            </script>
+          </section>
 
           <section data-markdown>
             <script type="text/template">
@@ -196,6 +220,91 @@
               ```
             </script>
           </section>
+
+          <section data-markdown>
+            <script type="text/template">
+              `git stash`
+              ```
+              $ git status && git diff
+              # On branch master
+              # Changes not staged for commit:
+              #   (use "git add <file>..." to update what will be committed)
+              #   (use "git checkout -- <file>..." to discard changes in working directory)
+              #
+              # modified:   hello.txt
+              #
+              no changes added to commit (use "git add" and/or "git commit -a")
+              diff --git a/hello.txt b/hello.txt
+              index 6566899..70971b1 100644
+              --- a/hello.txt
+              +++ b/hello.txt
+              @@ -1 +1,3 @@
+               Hello, git!
+               +
+               +In the middle of some stuff.
+              ```
+            </script>
+          </section>
+
+          <section data-markdown>
+            <script type="text/template">
+              `git stash`
+              ```
+              $ git stash
+              Saved working directory and index state WIP on master: f87838d modified hello.txt
+              HEAD is now at f87838d modified hello.txt
+              $ git status
+              # On branch master
+              nothing to commit, working directory clean
+              ```
+            </script>
+          </section>
+
+          <section data-markdown>
+            <script type="text/template">
+              `git reflog`
+              ```
+              $ git reflog
+              fc9468d HEAD@{0}: rebase finished: returning to refs/heads/master
+              fc9468d HEAD@{1}: checkout: moving from master to fc9468da9a443b5e6ac553b3e445333a0eabfc18^0
+              87f86a1 HEAD@{2}: commit: refactor Spinner to use base class
+              3e9855a HEAD@{3}: commit: refactor Progress to use base
+              34193d3 HEAD@{4}: commit: refactor Image class
+              83a0a93 HEAD@{5}: commit: remove unused methods for button properties
+              c623c24 HEAD@{6}: commit: refactor Button to use base method for properties
+              f830843 HEAD@{7}: commit: extract View#raw_view method
+              a8454d2 HEAD@{8}: commit: update ChangeLog
+              ```
+            </script>
+          </section>
+
+          <section data-markdown>
+            <script type="text/template">
+              ### Branching vs. Merging
+
+              * `merge`
+                * creates a "merge" commit node with two parents
+                * non-flat branch graph
+              * `rebase`
+                * "replays" local commits on **top** of anything new
+                * keeps the branch graph flat
+            </script>
+          </section>
+
+          <section data-markdown>
+            <script type="text/template">
+              ### Putting It All Together
+              `http://pcottle.github.io/learnGitBranching/`
+              ![Learn Git Branching](images/learn_git.png)
+            </script>
+          </section>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            # Questions?
+            ![Questions](images/lesko_questions.jpg)
+          </script>
         </section>
       </div>
 
