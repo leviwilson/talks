@@ -67,21 +67,26 @@
         <section data-markdown>
           <script type="text/template">
             ### Build Agents
+            * Cukes run ranomly on the TCAGENT vms
+            * Before rdcing to these vms make cukes are not running
+            * Use tscon icon on desktop to exit the vm
           </script>
         </section>
 
         <section data-markdown>
           <script type="text/template">
             ### Projects / Configuration
+            * LF8 Sanity runs @sanity and excludes @ob_only
+            * OB13 All excludes @lf_only
+            * @wip not included
           </script>
         </section>
 
         <section data-markdown>
           <script type="text/template">
             #### Environments (Database, DMS, etc.)
-            * first
-            * second
-            * third
+            * Cukes run against the Daily DMSs
+            * Cukes pull down the newest green CI build code
           </script>
         </section>
 
@@ -94,6 +99,11 @@
         <section data-markdown>
           <script type="text/template">
             ### Scheduling
+            * LF8 Sanity after code checkin
+            * OB13 Sanity after LF8 Sanity
+            * Environment Refresh
+            * LF8 All after Environment Refresh
+            * OB13 All after LF8 All
           </script>
         </section>
 
