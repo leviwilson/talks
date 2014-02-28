@@ -93,6 +93,8 @@
         <section data-markdown>
           <script type="text/template">
             #### Refreshing Code / Database / Services
+            * Environment Refresh copies data from vm-qatrunk-2012/automation DMS VM to the Sanity and All VMs
+            * Prevents us from having to make Pilot changes in 6 places
           </script>
         </section>
 
@@ -122,72 +124,107 @@
         <section data-markdown>
           <script type="text/template">
             #### Features, Steps, Screens, Helpers 
+            * Feautres - Naming, cucumber scenarios, tags
+            * Steps - Naming, code
+            * Screens - Naming, gems, objects, methods
           </script>
         </section>
 
         <section data-markdown>
           <script type="text/template">
             #### Hooks
+            * Code that runs before or after a tag
+            * Example - @people before hook
           </script>
         </section>
 
         <section data-markdown>
           <script type="text/template">
             #### Tags
+            * Sanity v All - @sanity
+            * DMS specific  - @lf_only, @ob_only
+            * @wip - tests in progress
           </script>
         </section>
 
         <section data-markdown>
           <script type="text/template">
             #### Passed, Failed and Ignored
+            * Team City test status
+            * Ignored - steps after failed steps or tests where the background failed
           </script>
         </section>
 
         <section data-markdown>
           <script type="text/template">
             ### What runs?
+            * Sanity LF8 runs `@sanity`, excluding `@ob_only`
+            * All OB13 excludes `@lf_only`
+            * None run `@wip`
           </script>
         </section>
 
         <section data-markdown>
           <script type="text/template">
             ### The Life of a Cuke
+            * Our cukes start out as test cases from Sanity or Master docs
+            * Each test case may become one or more cukes
+            * Each cuke may cover one or more test cases
           </script>
         </section>
 
         <section data-markdown>
           <script type="text/template">
             #### Where should it live?
+            * Does it fit in an existing Feature?
+            * If not, make a new Feature
           </script>
         </section>
 
         <section data-markdown>
           <script type="text/template">
             #### `@wip`
+            * Start with writing the cucumber scenario in the Feature
+            * Tagged @wip while we work on it
+            * Step re-use when possible
           </script>
         </section>
 
         <section data-markdown>
           <script type="text/template">
             #### Implementing Steps
+            * Write the code for each cucumber step in the Steps file
+            * Add new Screen classes as needed
+            * Add new objects or methods to Screens
+            * May need to add data to Pilot
           </script>
         </section>
 
         <section data-markdown>
           <script type="text/template">
             #### Scope of a test?
+            * Make sure the test passes in LF8 and OB13
+            * Or tag it `@lf_only` or `@ob_only`
+            * Remove the `@wip` tag
           </script>
         </section>
 
         <section data-markdown>
           <script type="text/template">
             #### Documentation Housekeeping
+            * In the local Sanity or Master doc add green highlight
+            * End of release - update doc on Sharepoint
           </script>
         </section>
 
         <section data-markdown>
           <script type="text/template">
             #### Code Housekeeping
+            * We heart refactoring
+            * Methods
+            * Add variables to cucumber steps
+            * New knowledge
+            * We love removing lines of code!
           </script>
         </section>
 
@@ -200,6 +237,10 @@
         <section data-markdown>
           <script type="text/template">
             ### Troubleshooting
+            * Team City navigation
+            * Artifacts
+            * Test metrics
+            * Exit Code 1 - boo!
           </script>
         </section>
 
@@ -218,24 +259,9 @@
         <section data-markdown>
           <script type="text/template">
             ## The Future 
-          </script>
-        </section>
-
-        <section data-markdown>
-          <script type="text/template">
-            ### Running against a specific snapshot of the code
-          </script>
-        </section>
-
-        <section data-markdown>
-          <script type="text/template">
-            ### Better Acceptent / Integration / Unit Balance
-          </script>
-        </section>
-
-        <section data-markdown>
-          <script type="text/template">
-            ### Adopt an actual ATDD process
+            * Running against a specific snapshot of the code
+            * Better Acceptance / Integration / Unit test balance
+            * Adopt an actual ATDD process
           </script>
         </section>
 
