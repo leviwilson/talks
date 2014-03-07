@@ -111,13 +111,81 @@
 
         <section data-markdown>
           <script type="text/template">
-            ## Cukes
+            ## Cukes - Structure
           </script>
         </section>
 
         <section data-markdown>
           <script type="text/template">
-            ### Structure
+            ### Features
+            ```
+            @capture
+            Feature: Verifying the document type/scanner profile settings in Capture.
+
+            @sanity
+            Scenario: Scanning for a doc type set to not route
+              Given I set the "QC Findings" doc type do not route option to "checked"
+              When I scan a document with this doc type
+              Then "(non-routed)" is displayed below the shopping cart and I can file the document
+              And no task is created for this document
+
+            @sanity
+            Scenario: Scanning for a doc type set to route when the member has no case worker
+              Given I set the "QC Findings" doc type do not route option to "unchecked"
+              When I select a member with no case worker from autofill
+              And I scan a document with a doc type set to route
+              Then "(non-routed)" is displayed below the shopping cart and I can file the document
+              And no task is created for this document
+            ```
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ### Step Definitions
+            ```ruby
+            Given(/^I set the "([^"]*)" doc type do not route option to "([^"]*)"$/) do |doctype, setting|
+              isChecked = (setting.upcase.eql?('CHECKED')) ? true : false   #then true else false end
+
+              on(Dashboard).capture_admin_options
+              # ...
+            end
+
+            When /^I scan a document with this doc type$/ do
+              on(Dashboard).launch_tasks
+              on(MainLeftPanel).wait_for_control :id => 'btnRefresh'
+              # ...
+            end
+
+            Then(/^"([^"]*)" is displayed below the shopping cart and I can file the document$/) do |routing_text|
+              on(CaptureMainPanel).thumbnail_routed_text.should include routing_text
+            end
+            ```
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ### Screens
+            ```ruby
+            class OptionsCaptureDocTypeScanner
+              include Mohawk, Mohawk::Navigation, RSpec::Matchers
+              window(:title => /Options/)
+
+              table(:current_scan_profiles, :id => 'currentScanProfiles')
+              button(:add, :id => 'addScanProfile')
+              button(:edit, :id => 'editScanProfile')
+              button(:delete, :id => 'deleteScanProfile')
+
+              def current_scan_profiles=(value)
+                select_current_scan_profiles value: value
+              end
+
+              def current_scan_profiles_count
+                current_scan_profiles.count
+              end
+            end
+            ```
           </script>
         </section>
 
