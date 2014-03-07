@@ -112,6 +112,7 @@
         <section data-markdown>
           <script type="text/template">
             ## Cukes - Structure
+            ![Cuke Structure](images/cuke_tree.png)
           </script>
         </section>
 
@@ -183,6 +184,29 @@
 
               def current_scan_profiles_count
                 current_scan_profiles.count
+              end
+            end
+            ```
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ### Helpers
+            ```ruby
+            require 'date'
+
+            class Date
+              def to_american_s
+                self.strftime '%-m/%d/%Y'
+              end
+
+              def to_american_s_single_day
+                self.strftime '%-m/%-d/%Y'
+              end
+
+              def weekday?
+                !self.saturday? && !self.sunday?
               end
             end
             ```
