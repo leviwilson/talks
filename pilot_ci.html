@@ -125,14 +125,14 @@
 
             @sanity
             Scenario: Scanning for a doc type set to not route
-              Given I set the "QC Findings" doc type do not route option to "checked"
+              Given I set the "QC Findings" doc type do not route option to "Checked"
               When I scan a document with this doc type
               Then "(non-routed)" is displayed below the shopping cart and I can file the document
               And no task is created for this document
 
             @sanity
             Scenario: Scanning for a doc type set to route when the member has no case worker
-              Given I set the "QC Findings" doc type do not route option to "unchecked"
+              Given I set the "QC Findings" doc type do not route option to "Unchecked"
               When I select a member with no case worker from autofill
               And I scan a document with a doc type set to route
               Then "(non-routed)" is displayed below the shopping cart and I can file the document
@@ -146,9 +146,8 @@
             ### Step Definitions
             ```ruby
             Given(/^I set the "([^"]*)" doc type do not route option to "([^"]*)"$/) do |doctype, setting|
-              isChecked = (setting.upcase.eql?('CHECKED')) ? true : false   #then true else false end
-
               on(Dashboard).capture_admin_options
+              on(OptionsCaptureMain).doctype_scanner_settings_node
               # ...
             end
 
