@@ -214,18 +214,40 @@
 
         <section data-markdown>
           <script type="text/template">
-            #### Features, Steps, Screens, Helpers 
-            * Features - Naming, cucumber scenarios, tags
-            * Steps - Naming, code
-            * Screens - Naming, gems, objects, methods
-            * Helper files includes methods used across screens
+            ### Tags
+            * Sanity v All - `@sanity`
+            * DMS specific  - `@lf_only`, `@ob_only`
+            * `@wip` - tests in progress
           </script>
         </section>
 
         <section data-markdown>
           <script type="text/template">
-            #### Hooks and Data
-            * Code that runs before or after a tag
+            ### Hooks
+            Code that runs before or after a tag
+            ```ruby
+            Before("@capture_kiosk") do
+              CompassMessages.tell_pilot_to_launch_in_kiosk
+            end
+
+            Before('@toast') do
+              NotificationMessage.delete_all_toast_notifications
+              NotificationMessageAction.delete_all_toast_notification_actions
+              Pilot.close
+            end
+
+            Before("~@login") do
+              $process ||= start_pilot_and_login
+              DataMagic.yml_directory = File.join(File.dirname(__FILE__), "config/data")
+              Configuration.clear_freeform_keywords = true
+            end
+            ```
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ### Data
             * Use ActiveRecord to access the database
             * Each table is defined as a Class
             * Use Faker to create fake data
@@ -234,10 +256,24 @@
 
         <section data-markdown>
           <script type="text/template">
-            #### Tags
-            * Sanity v All - `@sanity`
-            * DMS specific  - `@lf_only`, `@ob_only`
-            * @wip - tests in progress
+            ### Data - Example
+            ```ruby
+            class Case < ActiveRecord::Base
+              self.table_name = :CPClientCase
+              self.primary_key = :pkCPClientCase
+              belongs_to :client
+              belongs_to :program_type, :foreign_key => :fkCPRefClientCaseProgramType
+
+              alias_attribute :state_case_number, :StateCaseNumber
+              alias_attribute :local_case_number, :LocalCaseNumber
+
+              def add_member(extra_info={})
+                member = PeopleData.add_caseless_member(extra_info)
+                member.cases << self
+                return member
+              end
+            end
+            ```
           </script>
         </section>
 
