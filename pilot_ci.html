@@ -90,6 +90,16 @@
             * Cukes pull down the newest green CI build code
           </script>
         </section>
+        
+        <section data-markdown>
+          <script type="text/template">
+            ### Databases
+            #### Daily
+            ![Daily](images/daily_automation.png) <!-- .element: width="450" -->
+            #### Automation
+            ![Automation](images/automation_databases.png) <!-- .element: width="450" -->
+          </script>
+        </section>
 
         <section data-markdown>
           <script type="text/template">
@@ -309,25 +319,6 @@
 
         <section data-markdown>
           <script type="text/template">
-            #### Passed, Failed and Ignored
-            * Passed - # of steps that were successful
-            * Failed - # of steps that were not
-            * Ignored - steps after failed steps or tests where the background failed
-            ![Passed, Failed, Ignored](images/passed_failed.png)
-          </script>
-        </section>
-
-        <section data-markdown>
-          <script type="text/template">
-            ### What runs?
-            * Sanity LF8 runs `@sanity`, excluding `@ob_only`
-            * All OB13 excludes `@lf_only`
-            * None run `@wip`
-          </script>
-        </section>
-
-        <section data-markdown>
-          <script type="text/template">
             ### The Life of a Cuke
             * Our cukes start out as test cases from Sanity or Master docs
             * Each test case may become one or more cukes
@@ -406,14 +397,23 @@
 
         <section data-markdown>
           <script type="text/template">
-            ### Databases
-            #### Daily
-            ![Daily](images/daily_automation.png) <!-- .element: width="450" -->
-            #### Automation
-            ![Automation](images/automation_databases.png) <!-- .element: width="450" -->
+            #### Passed, Failed and Ignored
+            * Passed - # of steps that were successful
+            * Failed - # of steps that were not
+            * Ignored - steps after failed steps or tests where the background failed
+            ![Passed, Failed, Ignored](images/passed_failed.png)
           </script>
         </section>
 
+        <section data-markdown>
+          <script type="text/template">
+            ### What runs?
+            * Sanity LF8 runs `@sanity`, excluding `@ob_only`
+            * All OB13 excludes `@lf_only`
+            * None run `@wip`
+          </script>
+        </section>
+        
         <section data-markdown>
           <script type="text/template">
             ### Troubleshooting
