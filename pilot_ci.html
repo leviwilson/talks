@@ -76,9 +76,10 @@
         <section data-markdown>
           <script type="text/template">
             ### Projects / Configuration
-            * LF8 Sanity runs `@sanity` and excludes `@ob_only`
-            * OB13 All excludes `@lf_only`
-            * `@wip` not included
+            * Projects are a collection of build configurations
+            * Build configurations are a collection of build steps
+            * Projects can be nested
+            * Settings can be shared between projects
           </script>
         </section>
 
@@ -104,7 +105,7 @@
         <section data-markdown>
           <script type="text/template">
             #### Refreshing Code / Database / Services
-            * Environment Refresh copies data from vm-qatrunk-2012/automation DMS VM to the Sanity and All VMs
+            * Environment Refresh copies data from `vm-qatrunk-2012/automation` DMS VM to the Sanity and All VMs
             * Prevents us from having to make Pilot changes in 6 places
           </script>
         </section>
@@ -225,15 +226,6 @@
 
         <section data-markdown>
           <script type="text/template">
-            ### Tags
-            * Sanity v All - `@sanity`
-            * DMS specific  - `@lf_only`, `@ob_only`
-            * `@wip` - tests in progress
-          </script>
-        </section>
-
-        <section data-markdown>
-          <script type="text/template">
             ### Hooks
             Code that runs before or after a tag
             ```ruby
@@ -336,7 +328,7 @@
 
         <section data-markdown>
           <script type="text/template">
-            #### `@wip`
+            #### Starting Your Scenario
             * Start with writing the cucumber scenario in the Feature
             * Tagged `@wip` while we work on it
             * Step re-use when possible
@@ -413,7 +405,7 @@
             ![Passed, Failed, Ignored](images/passed_failed.png)
           </script>
         </section>
-        
+
         <section data-markdown>
           <script type="text/template">
             ### Troubleshooting
